@@ -10,9 +10,7 @@ import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.ServerResponse.ok
 import org.springframework.web.reactive.function.server.body
-import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import java.util.*
 
 @Component
 class BaseHandler(private val repo: BaseRepository) {
@@ -29,15 +27,16 @@ class BaseHandler(private val repo: BaseRepository) {
 
     // MongoDB 전체 조회 Test
     fun getAll(req: ServerRequest): Mono<ServerResponse> {
-        val baseAllData: Flux<BaseDocument> = baseService.getAll()
         return ok().contentType(MediaType.APPLICATION_JSON)
-            .body<BaseDocument>(baseAllData)
+            .body<BaseDocument>(baseService.getAll())
             .switchIfEmpty(ServerResponse.notFound().build())
     }
 
     // BaseId값에 따른 조회 Test
-    fun findByBaseId(req: ServerRequest): Mono<ServerResponse> = ok()
-        .contentType(MediaType.APPLICATION_JSON)
-        .body(Mono.justOrEmpty(Optional.empty()))
+    fun findByBaseId(req: ServerRequest): Mono<ServerResponse> {
+        return ok().contentType(MediaType.APPLICATION_JSON)
+            .body<BaseDocument>(baseService.getDataByBaseId(req.pathVariable("baseId")))
+            .switchIfEmpty(ServerResponse.notFound().build())
+    }
 
 }

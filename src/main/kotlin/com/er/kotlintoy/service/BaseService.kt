@@ -15,5 +15,10 @@ class BaseService(private val baseRepository: BaseRepository) {
         // TODO Logic
         return baseRepository.findAll()
     }
+
+    fun getDataByBaseId(baseId: String): Flux<BaseDocument> {
+        // TODO Logic
+        return baseRepository.findByBaseId(baseId)
+    }
 }
 
