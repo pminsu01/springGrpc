@@ -1,15 +1,16 @@
 package com.er.kotlintoy.dto
 
-import lombok.Data
 import lombok.Getter
+import lombok.RequiredArgsConstructor
 import lombok.Setter
 
 
 @Getter
 @Setter
+@RequiredArgsConstructor
 class BaseDTO {
 
-    private val baseId: String? = null
-    private val baseName: String? = null
-    private val baseNumber: String? = null
+    val baseId: String? = null
+    val baseName: String? = null
+    val baseNumber: String? = null
 }

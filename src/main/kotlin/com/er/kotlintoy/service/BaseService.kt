@@ -10,7 +10,9 @@ import reactor.core.publisher.Flux
 @RequiredArgsConstructor
 class BaseService(private val baseRepository: BaseRepository) {
 
+
     fun getAll(): Flux<BaseDocument> {
+        // TODO Logic
         return baseRepository.findAll()
     }
 }
