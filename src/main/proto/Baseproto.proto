@@ -1,0 +1,28 @@
+syntax = "proto3";
+option java_multiple_files = true; // message와 enum, service 각 java 파일로 생성
+option java_outer_classname = "BaseProtoGrpc"; // 생성될 자바코드의 클래스명 (camel case 변환)
+
+// The BaseProtoService service definition.
+// Client에서 stub 객체로 호출할 서비스
+service BaseProtoService {
+  rpc retrieveBaseOnDB (BaseRequest) returns (BaseResonse) {}
+}
+
+// Request message
+message BaseRequest {
+  string baseId = 1;
+}
+
+// Response message
+message BaseResonse {
+  string query = 1;
+  int32 page_number = 2;
+  int32 result_per_page = 3;
+  string baseId = 4;
+  string baseName = 5;
+  string baseNumber = 6;
+
+}
+
+
+
