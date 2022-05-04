@@ -13,7 +13,6 @@ class BaseDocument(
     val id: Any?,
     val baseId: String,
     val baseName: String,
-    var baseNumber: String = "sd",
-    var baseAge: String
+    var baseNumber: String
 
 )

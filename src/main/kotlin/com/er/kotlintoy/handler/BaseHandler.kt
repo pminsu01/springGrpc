@@ -13,30 +13,23 @@ import org.springframework.web.reactive.function.server.body
 import reactor.core.publisher.Mono
 
 @Component
-class BaseHandler(private val repo: BaseRepository) {
-
-    @Autowired
-    private lateinit var baseService: BaseService;
-
+class BaseHandler(private val repo: BaseRepository, var baseService: BaseService) {
 
     // Router Handler 연결 테스트
     fun get(req: ServerRequest): Mono<ServerResponse> = ok()
         .contentType(MediaType.APPLICATION_JSON)
         .body<String>(Mono.just("테스트 중입니다.."))
 
-
     // MongoDB 전체 조회 Test
-    fun getAll(req: ServerRequest): Mono<ServerResponse> {
-        return ok().contentType(MediaType.APPLICATION_JSON)
+    fun getAll(req: ServerRequest): Mono<ServerResponse> =
+        ok().contentType(MediaType.APPLICATION_JSON)
             .body<BaseDocument>(baseService.getAll())
             .switchIfEmpty(ServerResponse.notFound().build())
-    }
 
     // BaseId값에 따른 조회 Test
-    fun findByBaseId(req: ServerRequest): Mono<ServerResponse> {
-        return ok().contentType(MediaType.APPLICATION_JSON)
+    fun findByBaseId(req: ServerRequest): Mono<ServerResponse> =
+        ok().contentType(MediaType.APPLICATION_JSON)
             .body<BaseDocument>(baseService.getDataByBaseId(req.pathVariable("baseId")))
             .switchIfEmpty(ServerResponse.notFound().build())
-    }
 
 }
