@@ -48,7 +48,6 @@ repositories {
 }
 
 dependencies {
-    implementation(platform("com.linecorp.armeria:armeria-bom:$armeriaVersion"))
     implementation(platform("io.netty:netty-bom:4.1.76.Final"))
 
     // SPRING BOOT 설정
@@ -71,13 +70,6 @@ dependencies {
     implementation("io.grpc:grpc-netty-shaded:$grpcProtoVersion")
     implementation("com.google.protobuf:protobuf-kotlin:$grpcVersion")
 
-    // ARMERIA 설정
-    implementation("com.linecorp.armeria:armeria:$armeriaVersion")
-    implementation("com.linecorp.armeria:armeria-grpc:$armeriaVersion")
-    implementation("com.linecorp.armeria:armeria-jetty9:$armeriaVersion")
-    implementation("com.linecorp.armeria:armeria-logback:$armeriaVersion")
-    implementation("com.linecorp.armeria:armeria-spring-boot2-webflux-starter:$armeriaVersion")
-
     runtimeOnly("org.springframework.boot:spring-boot-devtools:2.6.7")
     runtimeOnly("org.slf4j:log4j-over-slf4j:1.7.36")
 
@@ -85,6 +77,8 @@ dependencies {
     testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.0.0")
     testImplementation("io.projectreactor:reactor-test:3.4.17")
     testImplementation("org.springframework.restdocs:spring-restdocs-webtestclient:2.0.6.RELEASE")
+
+    implementation("net.devh:grpc-spring-boot-starter:2.13.1.RELEASE")
 }
 
 

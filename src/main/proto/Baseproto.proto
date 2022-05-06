@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 // com.er.kotlintoy.armeria.grpc.v1.BaseProtoService/retrieveBaseOnDB
-package com.er.kotlintoy.armeria.grpc.v1;
+package com.er.kotlintoy.grpc.v1;
 
 option java_multiple_files = true; // message와 enum, service 각 java 파일로 생성
 option java_outer_classname = "BaseProto"; // 생성될 자바코드의 클래스명 (camel case 변환)
@@ -9,16 +9,16 @@ option java_outer_classname = "BaseProto"; // 생성될 자바코드의 클래�
 // The BaseProtoService service definition.
 // Client에서 stub 객체로 호출할 서비스
 service BaseProtoService {
-  rpc retrieveBaseOnDB (BaseRequest) returns (BaseResonse);
+  rpc retrieveBaseOnDB (BaseRequest) returns (BaseResponse);
 }
 
-// Request message
+// Request messagex
 message BaseRequest {
   string baseId = 1;
 }
 
 // Response message
-message BaseResonse {
+message BaseResponse {
   string query = 1;
   int32 page_number = 2;
   int32 result_per_page = 3;

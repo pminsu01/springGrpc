@@ -1,19 +1,14 @@
 package com.er.kotlintoy.router
 
 import com.er.kotlintoy.handler.BaseHandler
-import com.er.kotlintoy.service.BaseGrpcService
-import com.linecorp.armeria.server.ServerBuilder
-import com.linecorp.armeria.server.grpc.GrpcService
-import com.linecorp.armeria.server.logging.AccessLogWriter
-import com.linecorp.armeria.server.logging.LoggingService
-import com.linecorp.armeria.spring.ArmeriaServerConfigurator
+import com.er.kotlintoy.service.BaseGrpcServerService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.reactive.function.server.router
 
 
 @Configuration
-class BaseRouter(private val handler: BaseHandler, var baseGrpcService: BaseGrpcService) {
+class BaseRouter(private val handler: BaseHandler, var baseGrpcServerService: BaseGrpcServerService) {
 
     @Bean
     fun routerFunction() =
@@ -26,21 +21,8 @@ class BaseRouter(private val handler: BaseHandler, var baseGrpcService: BaseGrpc
                 )
             }
         }
-
-    // ArmeriaServer Configuration
-    @Bean
-    fun armeriaServerConfigurator(): ArmeriaServerConfigurator {
-
-        return ArmeriaServerConfigurator { builder: ServerBuilder ->
-            builder.decorator(LoggingService.newDecorator())
-            builder.accessLogWriter(AccessLogWriter.combined(), false)
-                .service(GrpcService.builder()
-                    .addService(baseGrpcService)
-                    .build())
-        }
-    }
 }
 
 
-// grpcurl -plaintext -d '{"message":"horiga"}' com.er.kotlintoy.armeria.grpc.v1.BaseProtoService/retrieveBaseOnDB
+// grpcurl -plaintext -d '{"baseId":"erer"}' com.er.kotlintoy.grpc.v1.BaseProtoService/retrieveBaseOnDB
 

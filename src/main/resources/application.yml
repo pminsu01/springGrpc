@@ -6,3 +6,7 @@ spring:
 #      password:
       host: localhost
       port: 27017
+
+grpc:
+  server:
+    port: 9090
