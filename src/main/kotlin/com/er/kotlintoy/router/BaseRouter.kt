@@ -1,14 +1,13 @@
 package com.er.kotlintoy.router
 
 import com.er.kotlintoy.handler.BaseHandler
-import com.er.kotlintoy.service.BaseGrpcServerService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.reactive.function.server.router
 
 
 @Configuration
-class BaseRouter(private val handler: BaseHandler, var baseGrpcServerService: BaseGrpcServerService) {
+class BaseRouter(private val handler: BaseHandler) {
 
     @Bean
     fun routerFunction() =

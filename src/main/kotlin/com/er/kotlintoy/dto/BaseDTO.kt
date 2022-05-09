@@ -8,9 +8,9 @@ import lombok.Setter
 @Getter
 @Setter
 @RequiredArgsConstructor
-class BaseDTO {
+class BaseDTO (
 
-    val baseId: String? = null
-    val baseName: String? = null
-    val baseNumber: String? = null
-}
+    val baseId: String?,
+    val baseName: String?,
+    val baseNumber: String?
+)
