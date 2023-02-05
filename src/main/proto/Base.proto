@@ -25,7 +25,13 @@ message BaseResponse {
   string baseId = 4;
   string baseName = 5;
   string baseNumber = 6;
+  repeated string baseStrList = 7;
+  repeated CarList carList = 8;
 
 }
 
+message CarList{
+  string name = 1;
+  string madeYear = 2;
+}
 

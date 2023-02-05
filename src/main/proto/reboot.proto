@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package com.er.reboot.v1;
+
+service episodeService {
+  rpc retrieveEpisode (rebootAPIRequest) returns (rebootAPIResponse);
+}
+
+message rebootAPIRequest {
+
+  string apiKey =1;
+
+}
+
+message rebootAPIResponse {
+
+
+}

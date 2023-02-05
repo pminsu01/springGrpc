@@ -1,6 +1,6 @@
-package com.er.kotlintoy.repository
+package com.er.kotlingrpc.repository
 
-import com.er.kotlintoy.document.BaseDocument
+import com.er.kotlingrpc.document.BaseDocument
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux

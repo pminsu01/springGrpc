@@ -1,13 +1,11 @@
-package com.er.kotlintoy.service
+package com.er.kotlingrpc.service
 
 
-import com.er.kotlintoy.document.BaseDocument
-import com.er.kotlintoy.grpc.v1.BaseProtoServiceGrpc
+import com.er.kotlingrpc.mapper.BaseMapper
+import com.er.kotlingrpc.repository.BaseRepository
 import com.er.kotlintoy.grpc.v1.BaseProtoServiceGrpcKt
 import com.er.kotlintoy.grpc.v1.BaseRequest
 import com.er.kotlintoy.grpc.v1.BaseResponse
-import com.er.kotlintoy.mapper.BaseMapper
-import com.er.kotlintoy.repository.BaseRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import net.devh.boot.grpc.server.service.GrpcService
@@ -24,7 +22,6 @@ class BaseGrpcServerService(var baseRepository: BaseRepository) : BaseProtoServi
         val getBaseDocument = baseRepository.findByBaseId(request.baseId)
         var baseDTO = getBaseDocument.map(converter::toBaseDto)
 
-
         return BaseResponse.newBuilder()
             .setBaseId(withContext(Dispatchers.IO) {
                 baseDTO.blockFirst()
@@ -38,6 +35,8 @@ class BaseGrpcServerService(var baseRepository: BaseRepository) : BaseProtoServi
             .build()
     }
 }
+
+typealias dsv = HashMap<Int,Int>
 
 
 

@@ -13,7 +13,6 @@ import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 val grpcVersion = "3.19.3"
 val grpcKotlinVersion = "1.2.1"
 val grpcProtoVersion = "1.45.1"
-val armeriaVersion = "1.16.0"
 
 group = "com.er"
 version = "0.0.1-SNAPSHOT"
@@ -56,19 +55,20 @@ dependencies {
 
     // SPRING BOOT 설정
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
-    implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+    implementation("net.devh:grpc-spring-boot-starter:2.13.1.RELEASE")
 
-    implementation("org.projectlombok:lombok:1.18.24")
 
     // mapstruct 적용
-    implementation("org.mapstruct:mapstruct:1.5.0.RC1")
-    kapt("org.mapstruct:mapstruct-processor:1.5.0.RC1")
+    kapt("org.mapstruct:mapstruct-processor:1.5.2.Final")
+    implementation("org.mapstruct:mapstruct:1.5.2.Final")
+//	 https://mvnrepository.com/artifact/no.entur.mapstruct.spi/protobuf-spi-impl
+    implementation("no.entur.mapstruct.spi:protobuf-spi-impl:1.41")
 
     // GRPC 설정
     implementation("io.grpc:grpc-stub:$grpcProtoVersion")
@@ -81,12 +81,14 @@ dependencies {
     runtimeOnly("org.slf4j:log4j-over-slf4j:1.7.36")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test:2.6.7")
-    testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.0.0")
     testImplementation("io.projectreactor:reactor-test:3.4.17")
     testImplementation("org.springframework.restdocs:spring-restdocs-webtestclient:2.0.6.RELEASE")
 
-    implementation("net.devh:grpc-spring-boot-starter:2.13.1.RELEASE")
-    annotationProcessor ("org.mapstruct:mapstruct-processor:1.4.2.Final")
+    //caffeine cache 설정
+    implementation("com.github.ben-manes.caffeine:caffeine:3.1.2")
+    implementation("org.springframework.boot:spring-boot-starter-cache")
+
+
 }
 
 

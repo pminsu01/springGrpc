@@ -1,6 +1,6 @@
-package com.er.kotlintoy.router
+package com.er.kotlingrpc.router
 
-import com.er.kotlintoy.handler.BaseHandler
+import com.er.kotlingrpc.handler.BaseHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.reactive.function.server.router

@@ -1,13 +1,11 @@
-package com.er.kotlintoy.service
+package com.er.kotlingrpc.service
 
-import com.er.kotlintoy.document.BaseDocument
-import com.er.kotlintoy.repository.BaseRepository
-import lombok.RequiredArgsConstructor
+import com.er.kotlingrpc.document.BaseDocument
+import com.er.kotlingrpc.repository.BaseRepository
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 
 @Service
-@RequiredArgsConstructor
 class BaseService(private val baseRepository: BaseRepository) {
 
 

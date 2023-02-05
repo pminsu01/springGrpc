@@ -1,8 +1,5 @@
-package com.er.kotlintoy.document
+package com.er.kotlingrpc.document
 
-import lombok.AccessLevel
-import lombok.Getter
-import lombok.NoArgsConstructor
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
@@ -10,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 class BaseDocument(
 
     @Id
-    val id: Any?,
+    val id: Long?,
     val baseId: String,
     val baseName: String,
     var baseNumber: String

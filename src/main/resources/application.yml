@@ -7,6 +7,18 @@ spring:
       host: localhost
       port: 27017
 
+
 grpc:
   server:
     port: 9090
+
+cache:
+  caffeine:
+    policy:
+      base:
+        maximumSize: 300
+        expireAfterWrite: 300
+      er:
+        maximumSize: 200
+        expireAfterWrite: 500
+
